@@ -1,0 +1,54 @@
+Name: Gopavaram Mohan Kumar
+Batch: April 15th, 2022
+Tutor: Raham Shaik
+Project Name: Automation Deployment Through Jenkins
+
+WAR FILE DEPLOYMENT IN TOMCAT:
+
+1.	Installed Jenkins and connected slave to Jenkins master to ssh connection.
+2.	Installed prerequisites in master and slave nodes.
+3.	Logged into the Jenkins and created a Build Executor node(Slave) on Jenkins. By following the steps Manage Jenkins -> Manage node -> New Node -> Name -> Permanent Agent -> OK
+4.	The Build Executor is online.
+ 
+5.	Logged into Slave and install the all the prerequisites ( Git, Maven, Java).
+6.	Logged into Jenkins and created a New Job GitHub Repos url https://github.com/gmk1995/mywebapp.git  and build the job. The build is successful.
+ 
+7.	Fetch the Tomcat repos url to the Jenkins slave server to deploy the web app on the tomcat web server.
+8.	Untar the Tomcat repos.
+ 
+9.	Moved to Tomcat Directory and give read, write, and execute permissions to Webapp Directory.
+10.	Moved to Directory apache-tomcat-9.0.64/webapps/manager/META-INF and opened the content.xml file and deleted the two lines (value and allow tag lines).
+11.	Moved back to Directory apache-tomcat-9.0.64/conf and open tomcatuser.xml, Added tomcat server username, password, and roles to user. 
+12.	Moved to Directory apache-tomcat-9.0.64/bin and run the command (./startup.sh) to start the tomcat services in the Slaves Node.
+ 
+
+13.	Taken the Slave Node Public IP address and assessed the Tomcat server with port number 8080.
+ 
+14.	Clicked on Manager App and used the Tomcat user login details which I have added in the tomcatuser.xml file.
+ 
+
+15.	Successfully Logged into the Tom Web Application Manager.
+ 
+16.	Configured Plugins (Deploy to Container) in Jenkins to install the web app in the tomcat web server.
+17.	Configured the Previous build job with post-build actions -> Deploy war/ear to a container and added tomcat user details.
+18.	Build the Job (webapp_deployment). The Build is successful.
+
+ 
+ 
+
+19.	Went to Tomcat Webserver and refreshed the page the Webapp installation was successfully installed.
+ 
+ 
+20.	Clicked on the myweb-8.3.2. Web app accessed successfully.
+ 
+21.	Configured the webapp_depolyment job with poll scm by adding (* * * * *). 
+22.	Logged into GitHub and went to src/main/webapp/index.jsp and edited the Html code. 
+ 
+23.	New Build is automatically triggered and the Build is successful.
+ 
+
+24.	Refreshed the tomcat server and clicked on myweb-8.3.2. Web app to access the webapp.
+ 
+
+ 
+
